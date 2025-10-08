@@ -2,7 +2,7 @@ config:
   spec:
     destination:
       name: kind-kind2
-      # server: https://kubernetes.default.svc
+      server: https://51.20.178.23:6444
     source:
       repoURL: https://github.com/argoproj/argocd-example-apps
       targetRevision: master
