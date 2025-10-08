@@ -13,7 +13,7 @@ spec:
 
 
   destination:
-    name: kind-kind2                              # matches the name shown in `argocd cluster list`
+    server: https://kubernetes.default.svc                      # matches the name shown in `argocd cluster list`
     namespace: argocd                              # namespace to deploy into (will be created automatically)
 
   syncPolicy:
