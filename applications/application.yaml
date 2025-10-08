@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-applications
+  namespace: argocd         # where Argo CD is installed
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/TehilaTheStudent/argocd-example-apps.git   # any valid Helm or Git repo
+    targetRevision: HEAD                        # chart version
+    path: apps
+
+
+  destination:
+    name: kind-kind2                              # matches the name shown in `argocd cluster list`
+    namespace: argocd                              # namespace to deploy into (will be created automatically)
+
+  syncPolicy:
+    automated:                                    # enable auto-sync
+      prune: true                                 # delete resources not in Git
+      selfHeal: true                              # correct drift automatically
+    syncOptions:
+      - CreateNamespace=true                      # create namespace if missing
